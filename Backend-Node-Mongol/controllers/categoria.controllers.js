@@ -29,5 +29,23 @@ const borrarCategoria = async (req, res)=>{
         res.send({error:"categoria innexistente"})
     }
 }
+const actualizarCategoria = async (req, res)=>{
+    try {
+        const categoria = await Categoria.findOne({_id: req.params.id})
+        if (req.body.imagen){
+            categoria.imagen = req.body.imagen;}
+        if (req.body.nombre){
+            categoria.nombre = req.body.nombre;}
+        if (req.body.descripcion){
+            categoria.descripcion = req.body.descripcion;}
 
-export {obtenerCategoria, agregarCategoria, borrarCategoria};
+        await Categoria.save()
+        res.send(categoria)
+    } catch (error) {
+        res.status(404)
+        res.send({error:"categoria innexistente"})
+    }
+}
+
+
+export {obtenerCategoria, agregarCategoria, borrarCategoria, actualizarCategoria};
