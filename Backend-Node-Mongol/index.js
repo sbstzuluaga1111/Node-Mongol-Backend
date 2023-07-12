@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import conectarDB from "./config/config.js";
 import categoriasRouter from "./routes/categorias.routes.js"
 import clientesRouter from "./routes/clientes.routes.js"
-import clientesRouter from "./routes/productos.routes.js"
+import productosRouter from "./routes/productos.routes.js"
+import empleadosRouter from "./routes/empleados.routes.js"
 
 const app = express();
 
@@ -14,6 +15,7 @@ dotenv.config();
 app. use("/comida", categoriasRouter);
 app. use("/comida", clientesRouter);
 app. use("/comida", productosRouter);
+app. use("/comida", empleadosRouter);
 
 const PORT = process.env.PORT;
 
